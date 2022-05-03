@@ -12,9 +12,9 @@ def ceilingPack(df):
         return (1)
 def ProductMess(df):
     if df.Pack < 2:
-        return ('จัดส่งฟรี '+str(df['Product Name'])+' //มีบริการเก็บเงินปลายทาง//')
+        return ('ส่งฟรี '+str(df['Product Name'])+' //มีบริการเก็บเงินปลายทาง//')
     else:
-        return ('จัดส่งฟรี (จำนวน '+str(df.Pack)+' ชุด) '+df['Product Name']+' //มีบริการเก็บเงินปลายทาง//')
+        return ('ส่งฟรี (จำนวน '+str(df.Pack)+' ชุด) '+df['Product Name']+' //มีบริการเก็บเงินปลายทาง//')
 def checkprice(dp):
   if (dp.Pack < 2):
       pr = dp.Price      

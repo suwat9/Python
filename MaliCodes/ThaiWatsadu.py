@@ -15,9 +15,9 @@ def ceilingPack(df):
         return (1)
 def ProductMess(df):
     if df.Pack < 2:
-        return ('จัดส่งฟรี '+str(df.name)+' //มีบริการเก็บเงินปลายทาง//')
+        return ('ส่งฟรี '+str(df['name'])+' //มีบริการเก็บเงินปลายทาง//')
     else:
-        return ('จัดส่งฟรี (จำนวน '+str(df.Pack)+' ชุด) '+df['name']+' //มีบริการเก็บเงินปลายทาง//')
+        return ('ส่งฟรี (จำนวน '+str(df.Pack)+' ชุด) '+df['name']+' //มีบริการเก็บเงินปลายทาง//')
 def checkprice(dp):
   if (dp.Pack < 2):
       pr = dp.price      
@@ -30,7 +30,7 @@ def checkprice(dp):
   elif (pr < 9999): return ceiling(pr*2)
   else: return ceiling(pr*2)
 
-path = 'ไทวัสดุ'
+path = 'dataset\\ไทวัสดุ'
 splitPath = path + '\\Split'
 filenames = next(walk(path), (None, None, []))[2]  # [] if no file
 

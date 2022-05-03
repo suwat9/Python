@@ -8,16 +8,16 @@ import os
 
 def ceiling(n):
   return (math.ceil(n/10)*10-1)
-def ceilingPack(df):
-    if df.price > 0:
-        return (math.ceil(100/df.price))
+def ceilingPack(dp):
+    if dp.price > 0:
+        return (math.ceil(100/dp.price))
     else:
         return (1)
-def ProductMess(df):
-    if df.Pack < 2:
-        return ('จัดส่งฟรี '+str(df.name)+' //มีบริการเก็บเงินปลายทาง//')
+def ProductMess(dp):
+    if dp.Pack < 2:
+        return ('ส่งฟรี '+str(dp['name'])+' //มีบริการเก็บเงินปลายทาง//')
     else:
-        return ('จัดส่งฟรี (จำนวน '+str(df.Pack)+' ชุด) '+df['name']+' //มีบริการเก็บเงินปลายทาง//')
+        return ('ส่งฟรี (จำนวน '+str(dp.Pack)+' ชุด) '+str(dp['name'])+' //มีบริการเก็บเงินปลายทาง//')
 def checkprice(dp):
   if (dp.Pack < 2):
       pr = dp.price      
@@ -30,7 +30,7 @@ def checkprice(dp):
   elif (pr < 9999): return ceiling(pr*2)
   else: return ceiling(pr*2)
 
-path = 'MakroClick'
+path = 'dataset\\MakroClick'
 splitPath = path + '\\Split'
 filenames = next(walk(path), (None, None, []))[2]  # [] if no file
 

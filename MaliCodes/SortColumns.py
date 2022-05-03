@@ -14,6 +14,5 @@ Cprice, Cimg ,Cdes = cols.index('Price'),cols.index('Image 1'),cols.index('Descr
 cols[Cprice], cols[Cimg], cols[Cdes] = cols[Cdes], cols[Cprice], cols[Cimg]
 df = df[cols] 
 
-print(list(df.columns))
-
-print(df.head())
+cols = cols.sort()
+print('Second Rounds: ',cols)

@@ -16,7 +16,7 @@ def checkPrice(dp):
 #delete spacial characters
 reCMP = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
 
-pathDir = 'SubCat1'
+pathDir = 'dataset/SubCat1'
 splitPath = pathDir + '\\Split'
 filenames = next(walk(pathDir), (None, None, []))[2]  # [] if no file
 

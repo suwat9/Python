@@ -12,9 +12,9 @@ def ceilingPack(df):
         return (1)
 def ProductMess(df):
     if df.Pack < 2:
-        return ('จัดส่งฟรี '+str(df['Product Name'])+' //มีบริการเก็บเงินปลายทาง//')
+        return ('ส่งฟรี '+str(df['Product Name'])+' //มีบริการเก็บเงินปลายทาง//')
     else:
-        return ('จัดส่งฟรี (จำนวน '+str(df.Pack)+' ชุด) '+df['Product Name']+' //มีบริการเก็บเงินปลายทาง//')
+        return ('ส่งฟรี (จำนวน '+str(df.Pack)+' ชุด) '+df['Product Name']+' //มีบริการเก็บเงินปลายทาง//')
 def checkprice(dp):
   if (dp.Pack < 2):
       pr = dp.Price      
@@ -37,7 +37,7 @@ filenames = next(walk(path), (None, None, []))[2]  # [] if no file
 if not os.path.isdir(os.path.join(os.getcwd(), splitPath)):
     os.mkdir(splitPath)
 for f in filenames:
-    df = pd.read_excel(path+'\\'+f, sheet_name = 'Data', usecols = 'A:P')
+    df = pd.read_excel(path+'\\'+f, sheet_name = 'Data', usecols = 'A:Q')
     print(df.shape, f)
     df.Price.fillna(0, inplace = True)
     #rename column name to others
@@ -50,7 +50,7 @@ for f in filenames:
             df2 = df[df.Cat3 == Cat3].sort_values(['Cat3','Price'], ascending = [True, True])
             # find the index no
             indPrice = df2.columns.get_loc('Price')
-            df2.insert(indPrice - 2,'ProductName2',' ')
+            df2.insert(indPrice - 1,'ProductName2',' ')
             df2.insert(indPrice+2,'Pack',1)
             df2.Pack = df2.apply(ceilingPack, axis=1)
             df2.insert(indPrice+3,'PricePack',df2.Pack*df2.Price)
