@@ -30,7 +30,7 @@ def checkprice(dp):
 #delete spacial characters
 reCMP = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
 
-path = 'dataset/Store1'
+path = 'dataset/DaisoThailand - MAY2022 - 825SKU'
 splitPath = path + '\\Split'
 filenames = next(walk(path), (None, None, []))[2]  # [] if no file
 
@@ -40,12 +40,14 @@ for f in filenames:
     df = pd.read_excel(path+'\\'+f, sheet_name = 'Data', usecols = 'A:P')
     print(df.shape, f)
     df.Price.fillna(0, inplace = True)
-
-    uniques = df.Cat.unique()
+    #rename column name to others
+    df = df.rename(columns={'Cat 1':'Cat1','Cat 2':'Cat2','Cat 3': 'Cat3'})
+    
+    uniques = df.Cat3.unique()
     with pd.ExcelWriter(splitPath+'\\Split-'+f) as writer:
-        for Cat in uniques:
+        for Cat3 in uniques:
 
-            df2 = df[df.Cat == Cat].sort_values(['Cat','Price'], ascending = [True, True])
+            df2 = df[df.Cat3 == Cat3].sort_values(['Cat3','Price'], ascending = [True, True])
             # find the index no
             indPrice = df2.columns.get_loc('Price')
             df2.insert(indPrice - 2,'ProductName2',' ')
@@ -59,6 +61,6 @@ for f in filenames:
             df2.insert(indPrice+6,"Profit",(df2.SpecialPrice-df2.Price))    
             df2.ProductName2 = df2.apply(ProductMess, axis = 1)
             
-            Cat = reCMP.sub(' ',Cat)
+            Cat3 = reCMP.sub(' ',Cat3)
             df.sort_values(by=['Price'], ascending = [True],inplace=True)
-            df2.to_excel(writer, index=None, sheet_name=Cat[0:30])
+            df2.to_excel(writer, index=None, sheet_name=Cat3[0:30])
