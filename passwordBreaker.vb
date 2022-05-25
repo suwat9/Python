@@ -1,5 +1,6 @@
 Sub PasswordBreaker()
             'Breaks worksheet password protection.
+            'https://www.ablebits.com/office-addins-blog/protect-unprotect-excel-sheet-password/#:~:text=Just%20do%20any%20of%20the,from%20the%20drop%2Ddown%20menu.
      
             Dim i As Integer, j As Integer, k As Integer
             Dim l As Integer, m As Integer, n As Integer
